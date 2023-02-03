@@ -54,4 +54,11 @@ userRouter.post('/login', async (req, res, next) => {
 
 })
 
+userRouter.get("/logout", (req, res) => {
+  return res
+    .clearCookie("access_token")
+    .json({ text: "success" });
+});
+
+
 export default userRouter;
