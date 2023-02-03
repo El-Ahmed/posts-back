@@ -15,6 +15,7 @@ const postSchema = new Schema(
     },
     post_date: {
       type: "date",
+      sortable: true
     },
   }
 );
