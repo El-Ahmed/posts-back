@@ -1,14 +1,17 @@
-const express = require('express');
-
-const dotenv = require('dotenv');
-dotenv.config();
+import express from 'express';
+import postsRouter from './src/routes/posts.route.js';
+import { config } from 'dotenv';
+config();
 
 const app = express();
 
 
-app.get('/hello', (req,res) => {
-    res.send("hello world");
-})
+
+
+
+app.use('/api/posts', postsRouter)
+
+
 
 const port = process.env.PORT || 5050
 
