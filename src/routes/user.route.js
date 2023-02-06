@@ -33,7 +33,7 @@ userRouter.post('/login', async (req, res, next) => {
 
     const userArr = await userRepository.search().where('username').equals(user.username).return.all();
 
-    if (!userArr || userArr.length == 0) {
+    if (!userArr || userArr.length == 0 || !userArr[0]) {
         res.status(404).json({text: "username not found"})
         return
     }
