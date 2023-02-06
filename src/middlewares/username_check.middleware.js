@@ -4,6 +4,11 @@ import userRepository from "../models/user.model.js";
 const usernameCheck = async (req,res,next) => {
     
     const username = req.body.username;
+    
+    if (!username || username == '') {
+        res.status(409).json({ text: 'username in use' })
+        return
+    }
 
     const usersCount = await userRepository.search().where('username').equals(username).return.count()
     if (usersCount>0) {
